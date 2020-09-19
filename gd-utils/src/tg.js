@@ -53,6 +53,7 @@ sourceID可以是google drive分享网址本身，也可以是分享ID。如果�
 /bm | 返回所有设置的收藏夹
 /bm set movie folder-id | 将folder-id添加到收藏夹，别名设为movie
 /bm unset movie | 删除此收藏夹
+/bm restore | 还原收藏夹
 </pre>`
   return sm({ chat_id, text, parse_mode: 'HTML' })
 }
@@ -133,7 +134,7 @@ function restore_bookmark (chat_id) {
   }
   if (!bookMarks.length) return sm({ chat_id, text: '未找到有效Secrets, 请检查git settings'})
   bookMarks.forEach(v => {
-    if (!!v.alias && !!v.target) {
+    if (v.length === 2) {
       db.prepare('INSERT INTO bookmark (alias, target) VALUES (?, ?)').run(v[0], v[1])
     }
   })
