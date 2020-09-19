@@ -126,13 +126,15 @@ function restore_bookmark (chat_id) {
   if (!book_marks) return sm({ chat_id, text: '未找到有效Secrets, 请检查git settings' })
   let bookMarks = []
   try {
-    bookMarks = JSON.parse(book_marks)
+    let b = book_marks.split('|')
+    if (!b.length) return sm({ chat_id, text: 'BOOK_MARKS格式错误, 请检查git settings' })
+    bookMarks = b.map(v => v.split(','))
   } catch(e) {
   }
   if (!bookMarks.length) return sm({ chat_id, text: '未找到有效Secrets, 请检查git settings'})
   bookMarks.forEach(v => {
     if (!!v.alias && !!v.target) {
-      db.prepare('INSERT INTO bookmark (alias, target) VALUES (?, ?)').run(v.alias, v.target)
+      db.prepare('INSERT INTO bookmark (alias, target) VALUES (?, ?)').run(v[0], v[1])
     }
   })
   return sm({ chat_id, text: '还原收藏成功' })
