@@ -19,7 +19,7 @@ const AUTH = { // 如果您拥有service account的json授权文件，可将其�
   access_token: '', // 可以留空
   tg_token: 'bot_token', // 你的 telegram robot 的 token，获取方法参见 https://core.telegram.org/bots#6-botfather
   tg_whitelist: ['your_tg_username'], // 你的tg username(t.me/username)，bot只会执行这个列表里的用户所发送的指令,
-  book_marks: 'book_marks' // 用于还原收藏夹, 格式: [{"alias":"movie2","target":"XXXXXX"},{"alias":"movie3","target":"XXXXXX"}]
+  book_marks: 'your_book_marks' // 用于还原收藏夹, 格式: alias,target|alias,target
 }
 
 module.exports = { AUTH, PARALLEL_LIMIT, RETRY_LIMIT, TIMEOUT_BASE, TIMEOUT_MAX, LOG_DELAY, PAGE_SIZE, DEFAULT_TARGET }

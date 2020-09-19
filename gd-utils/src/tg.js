@@ -123,6 +123,7 @@ function unset_bookmark ({ chat_id, alias }) {
 function restore_bookmark (chat_id) {
   let records = db.prepare('select alias, target from bookmark').all()
   if (records.length) return sm({ chat_id, text: '数据库中已有收藏数据, 无法还原' })
+  if (!book_marks) return sm({ chat_id, text: '未找到有效Secrets, 请检查git settings' })
   let bookMarks = []
   try {
     bookMarks = JSON.parse(book_marks)
