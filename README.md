@@ -1,5 +1,7 @@
 # IBM-gd-utils
 
+> **支持重启后还原收藏夹, 见`config.js book_marks`**
+
 IBM Cloud Fonudray + gd-utils + Github Actions
 
 > **效果：用GitHub Actions全自动安装gd-utils机器人到IBM Cloud Fonudray容器内，并且每周五12点定时重启IBM CF**
